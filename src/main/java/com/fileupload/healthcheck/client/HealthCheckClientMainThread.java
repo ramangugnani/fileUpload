@@ -1,4 +1,4 @@
-package com.fileupload.service;
+package com.fileupload.healthcheck.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,12 +16,11 @@ import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.impl.StdSchedulerFactory;
 
-import com.fileupload.healthcheck.client.HealthCheckSendMessageJob;
 import com.fileupload.healthcheck.message.HealthCheckMessage;
 import com.fileupload.healthcheck.server.ServerMainThread;
 import com.google.gson.Gson;
 
-public class ClientMainThread extends Thread{
+public class HealthCheckClientMainThread extends Thread{
 
 	private BufferedReader in;
 	private PrintWriter out;
@@ -29,9 +28,9 @@ public class ClientMainThread extends Thread{
 	private Integer port;
 	private Gson gson;
 	
-	private static final Logger LOG = Logger.getLogger(ClientMainThread.class.getName());
+	private static final Logger LOG = Logger.getLogger(HealthCheckClientMainThread.class.getName());
 	
-	public ClientMainThread(String serverAdress,Integer port) {
+	public HealthCheckClientMainThread(String serverAdress,Integer port) {
 		this.serverAddress = serverAdress;
 		this.port = port;
 	}
@@ -42,7 +41,7 @@ public class ClientMainThread extends Thread{
 		
 		ServerMainThread task = new ServerMainThread();
 		Thread serverThread = new Thread(task);
-		serverThread.setName("serverThread");
+		serverThread.setName("healthCheckClientMainThread");
 		serverThread.start();
 		
 

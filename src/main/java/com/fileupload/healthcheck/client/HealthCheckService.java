@@ -9,7 +9,6 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.fileupload.propertyreader.PropertyMap;
-import com.fileupload.service.ClientMainThread;
 
 public class HealthCheckService implements Job{
 	
@@ -23,7 +22,7 @@ public class HealthCheckService implements Job{
 			if(!seedNodeByPort.containsKey(entry.getKey())){
 				seedNodeByPort.put(entry.getKey(), entry.getValue());
 				LOG.info("Got new seed node creating health check connection with server."+entry.getKey());
-				Thread thread = new ClientMainThread(entry.getKey(),entry.getValue());
+				Thread thread = new HealthCheckClientMainThread(entry.getKey(),entry.getValue());
 				thread.setName("client:"+entry.getKey());
 				thread.start();
 			}

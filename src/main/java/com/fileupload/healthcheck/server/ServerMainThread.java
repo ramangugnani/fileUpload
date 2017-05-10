@@ -10,16 +10,12 @@ import com.fileupload.constants.Constants;
 public class ServerMainThread implements Runnable{
 
 	private static final Logger LOG = Logger.getLogger(ServerMainThread.class.getName());
-	
+
 	public void run() {
 		LOG.info("Server Main Thread Started");
 		ServerSocket listener = null;
 		try {
-			listener = new ServerSocket(Constants.PORT);
-		} catch (IOException e) {
-			LOG.error(e);
-		}
-		try {
+			listener = new ServerSocket(Constants.PORT);	
 			while (true) {
 				new ServerThread(listener.accept()).start();
 			}
@@ -27,11 +23,13 @@ public class ServerMainThread implements Runnable{
 			LOG.error(e);
 		} finally {
 			try {
-				listener.close();
+				if(null != listener){
+					listener.close();
+				}
 			} catch (IOException e) {
 				LOG.error(e);
 			}
-			LOG.info("Server Main Thread ");
+			LOG.info("Server Main Thread End");
 		}
 	}
 }
