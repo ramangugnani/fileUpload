@@ -1,0 +1,70 @@
+*/test-output/
+test-output/
+target/
+findbugs/
+bin/
+out/
+.idea/
+*.pyc
+user.properties
+.metadata/
+.idea/
+/WEB-INF/classes/com/snapdeal/catalog/admin/services/EmailServiceImpl.class
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+
+# Logs and databases #
+######################
+*.log.*
+*.log
+#*.sql
+*.sqlite
+*.review.diff
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+.classpath
+.project
+.settings
+.pydevproject
+
+# Idea Files
+############
+out/
+*.idea/
+*.iml
+
+
+#intellij idea files
+*.iml
+/pom-custom.xml
+**/.springBeans
+
+my_notes/*
+catalog-client-test/*
